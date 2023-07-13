@@ -1,37 +1,93 @@
-* {
+:root {
+  --navbar-list-text-color: #fff;
+  --navbar-background-color: transparent;
+  --main-background-color: darkred;
+  --body-background-color: #000;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: #000;
+  background-color: var(--body-background-color);
 }
 
 main {
   height: 100vh;
   width: 100vw;
+  position: relative;
 
-  background-color: darkred;
+  background-color: var(--main-background-color);
   -webkit-clip-path: polygon(
-    1% 99%,
-    99% 99%,
-    99% 7%,
-    90% 7%,
-    90% 3%,
-    10% 3%,
-    10% 7%,
-    1% 7%
+    2% 99%,
+    98% 98%,
+    98% 7%,
+    93% 7%,
+    93% 2%,
+    7% 2%,
+    7% 7%,
+    2% 7%
   );
   clip-path: polygon(
-    1% 99%,
-    99% 99%,
-    99% 7%,
+    2% 99%,
+    98% 98%,
+    98% 7%,
     93% 7%,
-    93% 3%,
-    7% 3%,
+    93% 2%,
+    7% 2%,
     7% 7%,
-    1% 7%
+    2% 7%
   );
 
   border-radius: 20px;
+}
+
+nav {
+  position: relative;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--navbar-background-color);
+  width: 80%;
+  height: 30px;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  font-size: 0.6em;
+  margin-right: 2.5em;
+  position: relative;
+  list-style: none;
+  color: var(--navbar-list-text-color);
+  --after-position: -15vh; /*  -7.8vh - -15vh   */
+  font-family: "Chakra Petch", sans-serif;
+}
+
+li::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  border-radius: 10px;
+  width: 130%;
+  height: 10vh;
+  background-color: black;
+  top: var(--after-position);
+  left: -15%;
+  z-index: -1;
 }
