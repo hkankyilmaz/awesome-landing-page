@@ -23,7 +23,7 @@ class Menu {
         let action = event.target.dataset.action;
         if (action) {
             this.showAlert(action);
-            document.querySelector();
+
         }
     }
 
@@ -100,8 +100,6 @@ document.querySelectorAll("span").forEach((el) => {
             tl_.to("main", { "--xx": "420px", duration: 0.2 })
                 .to(".span-one", { "scale": 1.3, y: -30, autoAlpha: 0, duration: 0.2 })
                 .to(".span-three", { rotation: -90, transformOrigin: "left bottom", "visibility": "visible" })
-                .set(".span-two", { scale: 1.2, "--span-two-y": "4.5vh", "--span-two-x": "4.5vw", duration: 0.2 })
-                .to(".span-three", { "--span-three-y": "38vh", duration: 0.1 })
 
             if (tl_.reversed()) {
                 tl_.play();
@@ -152,9 +150,11 @@ document.querySelector(".close").onclick = (event) => {
 let mm = gsap.matchMedia()
 
 mm.add("(min-width:1000px)", () => {
-    console.log("deneme")
     gsap.set(".open", { "display": "none" });
     gsap.set(".close", { "display": "none" });
+    if (mobileMueniTl) mobileMueniTl.revert();
+
+
 })
 
 

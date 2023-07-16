@@ -67,7 +67,7 @@ nav {
   transform: translateX(-50%);
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   background-color: var(--navbar-background-color);
@@ -199,16 +199,10 @@ span {
   top: 3vh;
   left: 2.5vw;
 }
-.span-two {
-  /* --span-two-x: 4vw; */
-  --span-two-y: 3vh;
-  font-size: 2rem;
-  top: var(--span-two-y);
-  left: calc(var(--span-two-x, 4.7vw) - 15px);
-}
+
 .span-three {
   --span-three-x: 4.5vw;
-  --span-three-y: 38vh;
+  --span-three-y: 355px;
   font-size: 2rem;
   z-index: -3;
   top: var(--span-three-y);
@@ -304,6 +298,7 @@ span:hover {
   }
   nav {
     background-color: black;
+    justify-content: center;
   }
   ul {
     flex-direction: column;
