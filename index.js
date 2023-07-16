@@ -93,19 +93,23 @@ tl.to('li', { "--after-position": "-10.7vh" })
 var tl_ = gsap.timeline();
 
 document.querySelectorAll("span").forEach((el) => {
-    el.onmouseenter = () => {
 
-        tl_.to("main", { "--xx": "420px", duration: 0.2 })
-            .to(".span-one", { "scale": 1.3, y: -30, autoAlpha: 0, duration: 0.2 })
-            .to(".span-three", { rotation: -90, transformOrigin: "left bottom", "visibility": "visible" })
-            .set(".span-two", { scale: 1.2, "--span-two-y": "4.5vh", "--span-two-x": "4.5vw", duration: 0.2 })
-            .to(".span-three", { "--span-three-y": "38vh", duration: 0.1 })
+    if (el.classList.contains("mobile-menu-icon") == false) {
+        el.onmouseenter = () => {
 
-        if (tl_.reversed()) {
-            tl_.play();
+            tl_.to("main", { "--xx": "420px", duration: 0.2 })
+                .to(".span-one", { "scale": 1.3, y: -30, autoAlpha: 0, duration: 0.2 })
+                .to(".span-three", { rotation: -90, transformOrigin: "left bottom", "visibility": "visible" })
+                .set(".span-two", { scale: 1.2, "--span-two-y": "4.5vh", "--span-two-x": "4.5vw", duration: 0.2 })
+                .to(".span-three", { "--span-three-y": "38vh", duration: 0.1 })
+
+            if (tl_.reversed()) {
+                tl_.play();
+            }
+
         }
-
     }
+
 })
 
 document.onclick = _.throttle((event) => {
@@ -113,10 +117,45 @@ document.onclick = _.throttle((event) => {
         if (tl_.reversed() == false) {
             tl_.reverse()
         }
-
-        console.log(event.target.tagName)
     }
 }, 1)
+
+let mobileMueniTl;
+
+document.querySelector(".open").onclick = (event) => {
+
+    mobileMueniTl = gsap.timeline()
+
+    mobileMueniTl.set("nav", { "position": "absolute", "width": "100vw", "height": "100vh", "left": "0", "top": "0", yPercent: -100, xPercent: 0, "zIndex": "22" })
+        .set(".close", { "display": "flex" })
+        .set(".open", { "display": "none" })
+        .to("nav", { yPercent: 0, autoAlpha: 1 })
+
+    if (mobileMueniTl.reversed() == true) {
+        mobileMueniTl.play();
+
+    }
+
+}
+
+document.querySelector(".close").onclick = (event) => {
+
+    gsap.set(".open", { "display": "flex" })
+    gsap.set(".close", { "display": "none" });
+    if (mobileMueniTl.reversed() == false) {
+        mobileMueniTl.reverse();
+
+    }
+
+}
+
+let mm = gsap.matchMedia()
+
+mm.add("(min-width:1000px)", () => {
+    console.log("deneme")
+    gsap.set(".open", { "display": "none" });
+    gsap.set(".close", { "display": "none" });
+})
 
 
 

@@ -25,6 +25,11 @@ body {
   background-color: var(--body-background-color);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 main {
   height: 100vh;
   width: 100vw;
@@ -45,10 +50,10 @@ main {
     2% 96%,
     98% 96%,
     98% 7%,
-    95% 7%,
-    95% 2%,
-    5% 2%,
-    5% var(--xx),
+    98% 7%,
+    98% 2%,
+    calc(4% + 20px) 2%,
+    calc(4% + 20px) var(--xx),
     2% var(--xx)
   );
 
@@ -227,6 +232,26 @@ span:hover {
   animation: rainbow-text-animation 0.5s ease forwards;
 }
 
+.mobile-menu-icon {
+  position: absolute;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  right: 30px;
+  top: 30px;
+  font-size: 2rem;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+.close {
+  display: none;
+}
 @keyframes rainbow-text-animation {
   0% {
     background-size: 57%;
@@ -254,5 +279,54 @@ span:hover {
   100% {
     background-size: 57%;
     background-position: 0 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  span:not(.mobile-menu-icon) {
+    display: none;
+  }
+
+  main {
+    -webkit-clip-path: none;
+    clip-path: none;
+  }
+  .wrapper {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .wrapper * {
+    border-radius: initial;
+  }
+  li::after {
+    display: none;
+  }
+  nav {
+    background-color: black;
+  }
+  ul {
+    flex-direction: column;
+  }
+  li {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    background: #ca4246;
+    background-color: #ca4246;
+    background: var(--gradientBg);
+    background-size: 57%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-animation-rev 0.5s ease forwards;
+    cursor: pointer;
+  }
+  li:hover {
+    animation: rainbow-text-animation 0.5s ease forwards;
+  }
+}
+@media (min-width: 1000px) {
+  .mobile-menu-icon {
+    display: none;
   }
 }
