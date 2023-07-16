@@ -1,7 +1,7 @@
 # Spootlight Effect
 
 🔸 Awesome landing page with spootlight effect ! <br>
-🔸 Click and see live demo [here](https://tictocgame.vercel.app/).
+🔸 Click and see live demo [here](https://awesome-landing-page-coral.vercel.app/).
 
 ## 🔥 Technologies and Libraries <br>
 
